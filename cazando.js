@@ -9,6 +9,12 @@ let gatoY=canvas.height-ALTO_GATO;
 let comidaX=canvas.width-ANCHO_COMIDA;
 let comidaY=canvas.height-ALTO_COMIDA;
 
+function graficarRectangulo(x, y, ancho, alto, color){
+
+    ctx.fillStyle=color;
+    ctx.fillRect(x, y, ancho, alto);
+
+}
 
 function iniciarJuego(){
 
@@ -19,14 +25,13 @@ function iniciarJuego(){
 
 function graficarGato(X, Y){
 
-    ctx.fillStyle="#ecc100";
-    ctx.fillRect(X, Y, ANCHO_GATO, ALTO_GATO);
+
+    graficarRectangulo(X, Y, ANCHO_GATO, ALTO_GATO, "#ecc100");
 
 }
 
 function graficarComida(X, Y){
 
-    ctx.fillStyle="#e70404";
-    ctx.fillRect(X, Y, ANCHO_COMIDA, ALTO_COMIDA);
+    graficarRectangulo(X, Y, ANCHO_COMIDA, ALTO_COMIDA, "#e70404");
 
 }
