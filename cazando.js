@@ -8,6 +8,7 @@ let gatoX=canvas.width/2;
 let gatoY=canvas.height-ALTO_GATO;
 let comidaX=canvas.width-ANCHO_COMIDA;
 let comidaY=canvas.height-ALTO_COMIDA;
+let puntaje=0;
 
 function dibujarRectangulo(x, y, ancho, alto, color){
 
@@ -74,5 +75,14 @@ function limpiarCanva(){
 function detectarColision(){
     if(comidaX+ANCHO_COMIDA>gatoX && comidaX<gatoX+ANCHO_GATO && comidaY+ALTO_COMIDA>gatoY && comidaY<gatoY+ALTO_GATO){
         alert("ATRAPADO!!");
+        aparecerComida();
+        puntaje=puntaje+1;
+        mostrarEnSpan("puntos", puntaje);
     }
+}
+
+function aparecerComida(){
+    comidaX=generarAleatorio(0, canvas.width-ANCHO_COMIDA);
+    comidaY=generarAleatorio(0, canvas.height-ALTO_COMIDA);
+    actualizarPantalla();
 }
