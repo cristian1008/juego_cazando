@@ -105,3 +105,14 @@ function restarTiempo(){
         clearInterval(intervalo);
     }
 }
+
+function reiniciar(){
+    gatoX=canvas.width/2;
+    gatoY=canvas.height-(ALTO_GATO);
+    puntaje=0;
+    tiempo=10;
+    mostrarEnSpan("puntos", puntaje);
+    mostrarEnSpan("tiempo", tiempo);
+    clearInterval(intervalo);
+    iniciarJuego();
+}
