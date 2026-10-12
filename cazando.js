@@ -26,7 +26,6 @@ function dibujarRectangulo(x, y, ancho, alto, color){
 function iniciar(){
 
     intervalo=setInterval(bajarLimon, velocidadCaida);
-    mostrarEnSpan("tiempo", velocidadCaida);
     dibujarSuelo(0, canvas.height-ALTO_PISO);
     dibujarPersonaje(personajeX, personajeY);
     dibujarLimon(limonX, limonY);
@@ -109,13 +108,11 @@ function detectarAtrapado(){
 
         if(puntaje==3){
             velocidadCaida=150;
-            mostrarEnSpan("tiempo", velocidadCaida);
             clearInterval(intervalo);
             intervalo=setInterval(bajarLimon, velocidadCaida);
 
         }else if(puntaje==6){
             velocidadCaida=100;
-            mostrarEnSpan("tiempo", velocidadCaida);
             clearInterval(intervalo);
             intervalo=setInterval(bajarLimon, velocidadCaida);
         }
@@ -125,4 +122,18 @@ function detectarAtrapado(){
         }
 
     }
+}
+
+function reiniciar(){
+    personajeX=canvas.width/2;
+    personajeY=canvas.height-(ALTO_PERSONAJE+ALTO_PISO);
+    limonX=canvas.width/2;
+    limonY=0;
+    puntaje=0;
+    vidas=3;
+    velocidadCaida=200;
+    mostrarEnSpan("puntos", puntaje);
+    mostrarEnSpan("vidas", vidas);
+    clearInterval(intervalo);
+    iniciar();
 }
