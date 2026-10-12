@@ -30,6 +30,7 @@ function iniciar(){
     dibujarSuelo(0, canvas.height-ALTO_PISO);
     dibujarPersonaje(personajeX, personajeY);
     dibujarLimon(limonX, limonY);
+    aparecerLimon();
 
 }
 
@@ -50,18 +51,39 @@ function dibujarSuelo(X, Y){
     dibujarRectangulo(X, Y, ANCHO_PISO, ALTO_PISO, "#120035");
 }
 
+function moverIzquierda(){
+    personajeX=personajeX-10;
+    actualizarPantalla();
+    detectarAtrapado();
+}
+
+
+function moverDerecha(){
+    personajeX=personajeX+10;
+    actualizarPantalla();
+    detectarAtrapado();
+}
+
 function detectarPiso(){
     if(limonY+ALTO_LIMON==canvas.height-ALTO_PISO){
+        aparecerLimon();
         vidas=vidas-1;
         mostrarEnSpan("vidas", vidas);
     }
     if(vidas==0){
         alert("GAME OVER");
+        clearInterval(intervalo);
     }
 }
 
+function aparecerLimon(){
+    limonX=generarAleatorio(0, canvas.width-ANCHO_LIMON);
+    limonY=0;
+    actualizarPantalla();
+}
 
 function actualizarPantalla(){
+    limpiarCanva();
     dibujarSuelo(0, canvas.height-ALTO_PISO);
     dibujarPersonaje(personajeX, personajeY);
     dibujarLimon(limonX, limonY);
@@ -74,8 +96,14 @@ function bajarLimon(){
     detectarPiso();
 }
 
+function limpiarCanva(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+
 function detectarAtrapado(){
     if(limonX+ANCHO_LIMON>personajeX && limonX<personajeX+ANCHO_PERSONAJE && limonY+ALTO_LIMON>personajeY && limonY<personajeY+ALTO_PERSONAJE){
+        aparecerLimon();
         puntaje=puntaje+1;
         mostrarEnSpan("puntos", puntaje);
 
@@ -93,6 +121,7 @@ function detectarAtrapado(){
         }
         else if(puntaje==10){
             alert("GANADOR YA TIENE LOS LIMONES SUFUCIENTES PARA EL TEQUILA VE A DISFRUTAR!!");
+            clearInterval(intervalo);
         }
 
     }
