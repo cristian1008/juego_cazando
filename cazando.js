@@ -39,21 +39,25 @@ function dibujarComida(X, Y){
 function moverIzquierda(){
     gatoX=gatoX-10;
     actualizarPantalla();
+    detectarColision();
 }
 
 function moverDerecha(){
     gatoX=gatoX+10;
     actualizarPantalla();
+    detectarColision();
 }
 
 function moverArriba(){
     gatoY=gatoY-10;
     actualizarPantalla();
+    detectarColision();
 }
 
 function moverAbajo(){
     gatoY=gatoY+10;
     actualizarPantalla();
+    detectarColision();
 }
 
 function actualizarPantalla(){
@@ -64,4 +68,11 @@ function actualizarPantalla(){
 
 function limpiarCanva(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+
+function detectarColision(){
+    if(comidaX+ANCHO_COMIDA>gatoX && comidaX<gatoX+ANCHO_GATO && comidaY+ALTO_COMIDA>gatoY && comidaY<gatoY+ALTO_GATO){
+        alert("ATRAPADO!!");
+    }
 }
