@@ -1,37 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="cazando.css" />
   <script src="utils.js"></script>
   <title>Juego Cazando</title>
 </head>
 <body onload="iniciarJuego()">
+  <main>
+    <header>
+      <p class="etiqueta">ARCADE · RETO CONTRARRELOJ</p>
+      <h1>Juego <span>Cazando</span></h1>
+      <p class="subtitulo">Atrapa el objetivo antes de que se acabe el tiempo.</p>
+      <p class="autor">Creado por Christian Herrera</p>
+    </header>
 
-  <h1>Juego Cazando</h1>
-  <p>Autor: Christian Herrera</p>
+    <section class="zona-juego" aria-label="Zona de juego">
+      <canvas id="areaJuego" width="500" height="500" aria-label="Área del juego"></canvas>
 
+      <div class="controles">
+        <button type="button" class="direccion arriba" onclick="moverArriba()" aria-label="Mover arriba">↑</button>
+        <div class="fila-direcciones">
+          <button type="button" class="direccion" onclick="moverIzquierda()" aria-label="Mover a la izquierda">←</button>
+          <button type="button" class="direccion" onclick="moverAbajo()" aria-label="Mover abajo">↓</button>
+          <button type="button" class="direccion" onclick="moverDerecha()" aria-label="Mover a la derecha">→</button>
+        </div>
+        <button type="button" class="reiniciar" onclick="reiniciar()">↻ <span>Reiniciar partida</span></button>
+      </div>
+    </section>
 
-  <canvas id="areaJuego" width="500px" height="500px"></canvas>
+    <div class="panel" aria-label="Marcador">
+      <div class="dato">
+        <span class="dato-label">PUNTOS</span>
+        <span class="dato-valor" id="puntos">0</span>
+      </div>
+      <div class="separador"></div>
+      <div class="dato">
+        <span class="dato-label">TIEMPO</span>
+        <span class="dato-valor tiempo-valor" id="tiempo">10</span>
+      </div>
+    </div>
 
-  <div class="controles">
-    <button onclick="moverArriba()">⬆</button>
-    <br>
-    <button onclick="moverIzquierda()">⬅</button>
-    <button onclick="moverAbajo()">⬇</button>
-    <button onclick="moverDerecha()">➡</button>
-    <br>
-    <button onclick="reiniciar()">Reiniciar</button>
-  </div>
-
-
-  <div class="panel">
-    <span>Puntos: <span id="puntos">0</span></span>
-    <span>Tiempo: <span id="tiempo">10</span></span>
-  </div>
-
-  <p id="mensaje"></p>
-
-
+    <p id="mensaje" role="status" aria-live="polite"></p>
+    <footer>OBSERVA · APUNTA · ATRAPA</footer>
+  </main>
 
   <script src="cazando.js"></script>
 </body>
