@@ -27,6 +27,27 @@ body {
     radial-gradient(ellipse at 50% 0%, rgba(69, 0, 0, 0.56), transparent 48%),
     radial-gradient(circle at 100% 85%, rgba(255, 113, 0, 0.08), transparent 28%),
     var(--noche);
+  position: relative;
+  isolation: isolate;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(4, 0, 31, 0.48) 0%,
+      rgba(4, 0, 31, 0.60) 45%,
+      rgba(4, 0, 31, 0.78) 100%
+    ),
+    url("gato-fondo.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 main {
@@ -36,6 +57,22 @@ main {
 
 header {
   margin-bottom: 24px;
+}
+
+.titulo-con-icono {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.gato-icono {
+  display: block;
+  width: clamp(48px, 8vw, 76px);
+  height: clamp(48px, 8vw, 76px);
+  object-fit: contain;
+  flex: 0 0 auto;
+  filter: drop-shadow(0 0 12px rgba(255, 113, 0, 0.3));
 }
 
 .etiqueta {
@@ -234,6 +271,15 @@ footer {
 
   header {
     margin-bottom: 19px;
+  }
+
+  .titulo-con-icono {
+    gap: 9px;
+  }
+
+  .gato-icono {
+    width: 46px;
+    height: 46px;
   }
 
   .zona-juego {

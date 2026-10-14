@@ -1,0 +1,6 @@
+ahora en estos archivos añadir de background de fondo esta imagen centrada y sin repetir o acomodada segun le parezca el mejor estilo gato-fondo.jpg y la otra imagen añadirla como icono en la parte superior al lado izquierdo del h1 donde dice juego cazando o como mejor le parezca gato-icon.jpg acomodar y darle buenos estilos a este icono si podria verse como icono sin ver lo blanco sino ver solo la parte negra mejor o como mejor le parezca
+
+
+
+
+el gato de fondo se podria colocar en el total de la pantalla o hay algun inconveniente
