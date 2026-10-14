@@ -1,34 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juego Cazando</title>
   <link rel="stylesheet" href="cazando.css" />
   <script src="utils.js"></script>
-  <title>Juego Cazando</title>
 </head>
 <body onload="iniciar()">
+  <main>
+    <header>
+      <p class="etiqueta">ARCADE · JUEGO DE HABILIDAD</p>
+      <h1>Juego <span>Cazando</span></h1>
+      <p class="autor">Pon a prueba tus reflejos y consigue la mayor puntuación.</p>
+      <p class="firma">Creado por Christian Herrera</p>
+    </header>
 
-  <h1>Juego Cazando</h1>
-  <p>Autor: Christian Herrera</p>
+    <section class="zona-juego" aria-label="Zona de juego">
+      <canvas id="areaJuego" width="500" height="500" aria-label="Área del juego"></canvas>
 
+      <div class="controles">
+        <div class="movimiento">
+          <button type="button" onclick="moverIzquierda()" aria-label="Mover a la izquierda">←</button>
+          <button type="button" onclick="moverDerecha()" aria-label="Mover a la derecha">→</button>
+        </div>
+        <button type="button" class="reiniciar" onclick="reiniciar()">↻ <span>Reiniciar partida</span></button>
+      </div>
+    </section>
 
-  <canvas id="areaJuego" width="500px" height="500px"></canvas>
+    <div class="panel" aria-label="Marcador">
+      <div class="dato">
+        <span class="dato-label">PUNTOS</span>
+        <span class="dato-valor" id="puntos">0</span>
+      </div>
+      <div class="separador"></div>
+      <div class="dato">
+        <span class="dato-label">VIDAS</span>
+        <span class="dato-valor vidas-valor" id="vidas">3</span>
+      </div>
+    </div>
 
-  <div class="controles">
-    <button onclick="moverIzquierda()">⬅</button>
-    <button onclick="moverDerecha()">➡</button>
-    <br>
-    <button onclick="reiniciar()">Reiniciar</button>
-  </div>
-
-
-  <div class="panel">
-    <span>Puntos: <span id="puntos">0</span></span>
-    <span>Vidas: <span id="vidas">3</span></span>
-  </div>
-
-  <p id="mensaje"></p>
-
-
+    <p id="mensaje" role="status" aria-live="polite"></p>
+    <footer>CONCÉNTRATE · MUÉVETE · ATRAPA</footer>
+  </main>
 
   <script src="cazando.js"></script>
 </body>
