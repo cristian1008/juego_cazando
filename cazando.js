@@ -4,8 +4,8 @@ const ALTO_PERSONAJE=60;
 const ANCHO_PERSONAJE=40;
 const ALTO_PISO=20;
 const ANCHO_PISO=canvas.width;
-const ALTO_LIMON=50;
-const ANCHO_LIMON=50;
+const ALTO_LIMON=10;
+const ANCHO_LIMON=10;
 let comidaX=canvas.width/2;
 let personajeX=canvas.width/2;
 let personajeY=canvas.height-(ALTO_PERSONAJE+ALTO_PISO);
@@ -42,7 +42,7 @@ function dibujarPersonaje(X, Y){
 
 function dibujarLimon(X, Y){
 
-    dibujarRectangulo(X, Y, ANCHO_LIMON, ALTO_LIMON, "#e70404");
+    dibujarRectangulo(X, Y, ANCHO_LIMON, ALTO_LIMON, "#ac00e0");
 
 }
 
@@ -70,7 +70,7 @@ function detectarPiso(){
         mostrarEnSpan("vidas", vidas);
     }
     if(vidas==0){
-        alert("GAME OVER");
+        alert("JUEGO TERMINADO");
         clearInterval(intervalo);
     }
 }
@@ -136,4 +136,16 @@ function reiniciar(){
     mostrarEnSpan("vidas", vidas);
     clearInterval(intervalo);
     iniciar();
+}
+
+
+
+function desaparecerPersonaje(){
+
+    clearInterval(intervalo);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    dibujarSuelo(0, canvas.height-ALTO_PISO);
+//    dibujarPersonaje(personajeX, personajeY);
+    dibujarLimon(limonX, limonY);
+
 }
